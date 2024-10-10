@@ -1,62 +1,66 @@
-# Bunq Betaal Gateway voor WooCommerce
+# Bunq Payment Gateway for WooCommerce
 
-Deze plugin voegt Bunq als betaalmethode toe aan je WooCommerce webshop. Klanten kunnen hiermee eenvoudig betalen via een Bunq.me link.
+This plugin adds Bunq as a payment method to your WooCommerce shop. Customers can easily pay via a Bunq.me link.
 
-## Installatie
+## Installation
 
-1. Download de plugin als ZIP-bestand van deze GitHub repository.
-2. Ga naar je WordPress dashboard en navigeer naar "Plugins" > "Nieuwe plugin".
-3. Klik op "Plugin uploaden" en selecteer het gedownloade ZIP-bestand.
-4. Activeer de plugin na installatie.
+1. Download the plugin as a ZIP file from this GitHub repository.
+2. Go to your WordPress dashboard and navigate to "Plugins" > "Add New".
+3. Click on "Upload Plugin" and select the downloaded ZIP file.
+4. Activate the plugin after installation.
 
-## Configuratie
+## Configuration
 
-Voordat je de plugin kunt gebruiken, moet je eerst een Bunq.me link aanmaken:
+Before you can use the plugin, you need to create a Bunq.me link:
 
-1. Open de Bunq app op je smartphone.
-2. Ga naar de rekening die je wilt gebruiken voor betalingen.
-3. Klik onder het totaalbedrag op "Creëer een bunq.me link".
-4. Volg de stappen in de app om je persoonlijke Bunq.me link aan te maken.
+1. Open the Bunq app on your smartphone.
+2. Go to the account you want to use for payments.
+3. Click on "Create a bunq.me link" under the total amount.
+4. Follow the steps in the app to create your personal Bunq.me link.
 
-Vervolgens configureer je de plugin in WooCommerce:
+Then configure the plugin in WooCommerce:
 
-1. Ga in je WordPress dashboard naar "WooCommerce" > "Instellingen" > "Betalingen".
-2. Zoek naar "Bunq Betaling" en klik op "Beheren".
-3. Vul de volgende gegevens in:
-   - Schakel de betaalmethode in
-   - Pas indien gewenst de titel en beschrijving aan
-   - Vul bij "Bunq.me Link" je persoonlijke Bunq.me link in (zonder bedrag aan het einde en met een / op het einde.)
-4. Klik op "Wijzigingen opslaan".
+1. In your WordPress dashboard, go to "WooCommerce" > "Settings" > "Payments".
+2. Look for "Bunq Payment" and click "Manage".
+3. Fill in the following details:
+   - Enable the payment method
+   - Adjust the title and description if desired
+   - Enter your personal Bunq.me link in the "Bunq.me Link" field (without an amount at the end and with a / at the end.)
+4. Click "Save changes".
 
-## Hoe het werkt
+## How it works
 
-1. Wanneer een klant Bunq als betaalmethode kiest en de bestelling plaatst, wordt er een unieke betaallink gegenereerd.
-2. De klant wordt doorgestuurd naar de bedankpagina, waar een grote groene "Betaal nu" knop wordt getoond met het te betalen bedrag.
-3. Als de klant op deze knop klikt, opent er een nieuw tabblad met de Bunq.me betaalpagina.
-4. Op deze pagina kan de klant de betaling voltooien via iDEAL of door in te loggen op hun Bunq account.
-5. Na succesvolle betaling wordt de klant teruggestuurd naar je webshop.
+1. When a customer chooses Bunq as the payment method and places the order, a unique payment link is generated.
+2. The customer is redirected to the thank you page, where a large green "Pay now" button is displayed with the amount to be paid.
+3. When the customer clicks this button, a new tab opens with the Bunq.me payment page.
+4. On this page, the customer can complete the payment via iDEAL or by logging into their Bunq account.
+5. After successful payment, the customer is redirected back to your webshop.
 
-Let op: 
-- De plugin verwerkt de betaling niet automatisch. Je zult de betaalstatus handmatig moeten bijwerken in je WooCommerce bestellingenoverzicht.
-- Ondanks dat je een betaalomschrijving kunt invullen bij een bunq.me betaling, wordt deze niet aan de betaling gekoppeld. Hierdoor is automatische verwerking van de betaling niet mogelijk. Je zult betalingen handmatig moeten controleren en koppelen aan de juiste bestellingen.
+Note:
+- The plugin does not process the payment automatically. You will need to update the payment status manually in your WooCommerce order overview.
+- Although you can enter a payment description for a bunq.me payment, it is not linked to the payment. This makes automatic processing of the payment impossible. You will need to manually check payments and link them to the correct orders.
 
-## Ondersteuning
+## Automatic Order Processing
 
-Voor vragen of ondersteuning, open een issue in deze GitHub repository.
+For instructions on how to set up automatic order processing using Zapier, OpenAI, and Telegram, please refer to the [Automatic Order Processing Instructions](Automatic-order-processing-instructions.md) file in this repository.
 
-## Bijdragen
+## Support
 
-Bijdragen aan deze plugin zijn welkom! Voel je vrij om een pull request in te dienen met verbeteringen of nieuwe functies.
+For questions or support, please open an issue in this GitHub repository.
 
-## Donaties
+## Contributing
 
-Als je deze plugin waardevol vindt en wilt ondersteunen, zijn donaties zeer welkom:
+Contributions to this plugin are welcome! Feel free to submit a pull request with improvements or new features.
+
+## Donations
+
+If you find this plugin valuable and want to support it, donations are very welcome:
 
 - Via Bunq: [http://bunq.me/dutchbase](http://bunq.me/dutchbase)
-- Met cryptocurrency: Neem contact op voor wallet adressen
+- With cryptocurrency: [Contact me for wallet addresses, open an issue on Github.](https://github.com/dutchbase/Bunq-Wordpress-Woocommerce-Betaling/issues)
 
-Je steun helpt bij het onderhouden en verbeteren van deze plugin. Bedankt!
+Your support helps maintain and improve this plugin. Thank you!
 
-## Licentie
+## License
 
-Deze plugin is uitgebracht onder de [GPLv2 of latere versie](https://www.gnu.org/licenses/gpl-2.0.html) licentie.
+This plugin is released under the [GPLv2 or later](https://www.gnu.org/licenses/gpl-2.0.html) license.
