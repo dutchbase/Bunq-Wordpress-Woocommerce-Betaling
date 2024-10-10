@@ -2,7 +2,7 @@
 /* 
 Plugin Name: Bunq Betaal Gateway 
 Description: Een aangepaste WooCommerce betaalmethode voor Bunq. 
-Version: 1.0
+Version: 1.9
 Author: Dutchbase
 Author URI: https://github.com/dutchbase
 */ 
@@ -129,7 +129,7 @@ function bunq_display_payment_button($order_id) {
         $formatted_amount = number_format($amount, 2, ',', '.');
         $order_number = $order->get_order_number();
 
-        echo '<div style="margin-bottom: 20px; text-align: center;">';
+        echo '<div id="bunq-payment-message" style="margin-bottom: 20px; text-align: center; background-color: #f8f8f8; padding: 20px; border: 1px solid #ddd;">';
         echo '<h2>Bedankt voor je bestelling!</h2>';
         echo '<p>Klik op de onderstaande knop om je betaling af te ronden voor bestelling #' . $order_number . '.</p>';
         echo '<a href="' . $bunq_link . '" target="_blank" style="display: inline-block; background-color: #3bb54a; color: white; padding: 15px 30px; text-decoration: none; font-size: 18px; font-weight: bold; border-radius: 5px;">';
@@ -137,6 +137,18 @@ function bunq_display_payment_button($order_id) {
         echo '</a>';
         echo '<p style="margin-top: 10px; font-size: 14px;">Je wordt doorgestuurd naar een veilige betaalpagina waar je kan betalen met iDEAL, Creditcard of Bancontact.</p>';
         echo '</div>';
+        
+        // Updated JavaScript to insert the message below the menu
+        echo '<script type="text/javascript">
+            document.addEventListener("DOMContentLoaded", function() {
+                var paymentMessage = document.getElementById("bunq-payment-message");
+                var contentArea = document.querySelector(".content-area") || document.querySelector(".site-content") || document.querySelector("main");
+                if (paymentMessage && contentArea) {
+                    contentArea.insertBefore(paymentMessage, contentArea.firstChild);
+                }
+            });
+        </script>';
     }
 }
+// Wijzig de prioriteit naar een zeer lage waarde (negatief getal) om ervoor te zorgen dat het als eerste wordt uitgevoerd
 add_action('woocommerce_thankyou', 'bunq_display_payment_button', 5);
