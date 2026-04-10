@@ -2,7 +2,7 @@
 /* 
 Plugin Name: Bunq Betaal Gateway 
 Description: Een aangepaste WooCommerce betaalmethode voor Bunq. 
-Version: 1.9
+Version: 2.0
 Author: Dutchbase
 Author URI: https://github.com/dutchbase
 */ 
@@ -80,7 +80,7 @@ function init_bunq_payment_gateway() {
             $order_number = $order->get_order_number();
             
             // Construct the Bunq.me link with order number
-            $bunq_link = trailingslashit($this->bunq_link) . $formatted_amount . '/%23' . $order_number;
+            $bunq_link = untrailingslashit($this->bunq_link) . '?amount=' . $formatted_amount . '&description=' . $order_number;
 
             // Mark as on-hold (we're awaiting the payment)
             $order->update_status('on-hold', __('Awaiting Bunq payment', 'woocommerce'));
@@ -100,16 +100,15 @@ function init_bunq_payment_gateway() {
             } else {
                 return array(
                     'result' => 'success',
-                    'redirect' => add_query_arg('bunq_payment', $bunq_link, $this->get_return_url($order))
+                    'redirect' => add_query_arg('bunq_payment', urlencode($bunq_link), $this->get_return_url($order))
                 );
             }
         } 
+
         public function receipt_page($order) { 
             $order = wc_get_order($order); 
             $amount = number_format($order->get_total(), 2, '.', ''); 
-            $url = "https://bunq.me/JOUWGEBRUIKERSNAAM/{$amount}"; 
-
- 
+            $url = "https://bunq.me/JOUWGEBRUIKERSNAAM/{$amount}";
         } 
     } 
     function add_bunq_gateway($methods) { 
@@ -123,7 +122,7 @@ function init_bunq_payment_gateway() {
 // Add this function outside of the WC_Gateway_Bunq class
 function bunq_display_payment_button($order_id) {
     if (isset($_GET['bunq_payment'])) {
-        $bunq_link = esc_url($_GET['bunq_payment']);
+        $bunq_link = esc_url(urldecode($_GET['bunq_payment']));
         $order = wc_get_order($order_id);
         $amount = $order->get_total();
         $formatted_amount = number_format($amount, 2, ',', '.');
